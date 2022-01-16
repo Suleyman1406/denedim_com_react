@@ -1,20 +1,20 @@
 import React from 'react'
 import { useState } from 'react'
-import Content from './Content'
+import Content from './CommentPage'
+import CommentPage from './CommentPage'
 import Navbar from './Navbar'
 import SideBar from './SideBar'
 
+import { Outlet } from "react-router-dom";
 
+const Home = ({isLogged,setIsLogged}) => {
 
-const Home = () => {
-
-    const[isLogged,setIsLogged]=useState(false);
 
     return (
             <div>
                 <Navbar hasContent={true} isLogged={isLogged} setIsLogged={setIsLogged}/>
                 <SideBar  isLogged={isLogged}/>
-                <Content isLogged={isLogged}/>
+                <Outlet isLogged={isLogged}/>
             </div>
     )
 }

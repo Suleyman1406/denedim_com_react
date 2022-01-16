@@ -360,6 +360,8 @@ const Navbar = ({hasContent,isLogged}) => {
                       <NavLogo src={"images/logo.jpg"}/>
                 </LogoContainer>
             </NavLink>
+            {hasContent &&
+            <>
             <NavMiddle>
                 <SearchContainer>
                   <Search>
@@ -369,10 +371,7 @@ const Navbar = ({hasContent,isLogged}) => {
                   </Search>
                 </SearchContainer>
             </NavMiddle>
-            {hasContent &&
-            <>
-            
-            
+           
             <NavBtns  >
                 <LinkR to="/login">
                 {!isLogged &&

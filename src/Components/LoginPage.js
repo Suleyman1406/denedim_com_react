@@ -25,7 +25,7 @@ class LoginPage extends Component   {
                     <label htmlFor="" className="form__label">Kullanıcı adı / E-posta</label>
                 </div>
                 <div className="login form__div">
-                    <input type="password" className="form__input" placeholder=" " value={this.state.password} onChange={(e)=>this.setState({password:e.target.value})}/>
+                    <input  type="password" className="form__input" placeholder=" " value={this.state.password} onChange={(e)=>this.setState({password:e.target.value})}/>
                     <label htmlFor="" className="form__label">Şifre</label>
                 </div>
                 <div className="login form__div">

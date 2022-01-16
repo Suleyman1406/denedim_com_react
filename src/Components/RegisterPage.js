@@ -64,7 +64,7 @@ class RegisterPage extends Component   {
                         </div>
                     </div>
 
-                    <div className="group" id="radio_group">
+                    <div className="group" id="radio_group" style={{"margin-bottom": "20px"}}>
                         <div className="form__div">
                             <input type="text" className="form__input" placeholder=" " value={this.state.job} onChange={(e)=>this.setState({job:e.target.value})}/>
                             <label className="form__label">Meslek</label>

@@ -9,7 +9,7 @@ import { useMediaPredicate } from "react-media-hook";
 import { useState } from 'react';
 import {MdCategory} from 'react-icons/md';
 import {BsBookmarkCheckFill} from 'react-icons/bs';
-
+import {Link} from "react-router-dom";
  const Bar=styled.div`
     position: ${(props)=>(props.isFixed?  'fixed' : 'absolute' )};
    top: ${(props)=>(props.isFixed?  '-15px' : '' )};
@@ -59,7 +59,7 @@ import {BsBookmarkCheckFill} from 'react-icons/bs';
 
 `
 
- const BarBtn=styled.button`
+ const BarBtn=styled(Link)`
     width: 100%;
     display: block;
     margin-bottom:15px;
@@ -71,7 +71,8 @@ import {BsBookmarkCheckFill} from 'react-icons/bs';
     font-weight: 800;
     color: black;
     border:none;
-
+    text-align: center;
+    text-decoration: none;
     font-family: 'Encode Sans Expanded',sans-serif;
     transition: 0.4s all ease;
     &:hover {
@@ -156,23 +157,23 @@ const SideBar = ({isLogged}) => {
                             <ProfileParag isName={false}><AiFillLike style={{transform:"translateY(3px)",float:"left"}}/> 82 begenme</ProfileParag>
                         </ProfileContainer>
                     
-                        <BarBtn>
+                        <BarBtn to=''>
                             <FaUserEdit  style={{transform:"translateY(-1px)",float:"left",marginLeft:"10px"}}  size={biggerThan400?20:25} />
                             Profil
                         </BarBtn>
-                        <BarBtn>
-                            <MdCategory    style={{transform:"translateY(-1px)",float:"left",marginLeft:"10px"}} size={biggerThan400?20:25}  />
-                            Kategoriler
+                        <BarBtn to='category'>
+                                <MdCategory    style={{transform:"translateY(-1px)",float:"left",marginLeft:"10px"}} size={biggerThan400?20:25}  />
+                                Kategoriler
                         </BarBtn>
-                        <BarBtn>
+                        <BarBtn to=''>
                             <BsBookmarkCheckFill  style={{transform:"translateY(-1px)",float:"left",marginLeft:"10px"}} size={biggerThan400?20:25} />
                             Kaydedilenler
                         </BarBtn>
-                        <BarBtn>
+                        <BarBtn to=''>
                             <RiCoupon2Fill  style={{transform:"translateY(-1px)",float:"left",marginLeft:"10px"}} size={biggerThan400?20:25}/>
                             Kuponlar
                         </BarBtn>
-                        <BarBtn>
+                        <BarBtn to=''>
                             <FaShareAlt   style={{transform:"translateY(-1px)",float:"left",marginLeft:"10px"}} size={biggerThan400?20:25} />
                             Paylaş
                         </BarBtn>
