@@ -1,41 +1,38 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import {Link} from 'react-router-dom'
-class LoginPage extends Component   {
+import { useProfile } from '../Context/ProfileContext';
+
+
+const LoginPage=()=>{
+    const[email,setEmail]=useState('');
+    const[password,setPassword]=useState('');
+    const[rememberMe,setRememberMe]=useState(false);
+    const{setIsLogged}=useProfile();
     
-    constructor(props){
-        super(props);
-        this.state={
-            email:'',
-            password:'',
-            rememberMe: false
-        }
-    }
-
-
-
-    render(){
-        return(
+    return(
         <>
         <div className="register log ">
             <h2>Üye Girişi</h2>
             <hr/>
             <form action="#">
                 <div className="login form__div">
-                    <input type="text" className="form__input" placeholder=" " value={this.state.email} onChange={(e)=>this.setState({email:e.target.value})}/>
+                    <input type="text" className="form__input" placeholder=" " value={email} onChange={(e)=>setEmail(e.target.value)}/>
                     <label htmlFor="" className="form__label">Kullanıcı adı / E-posta</label>
                 </div>
                 <div className="login form__div">
-                    <input  type="password" className="form__input" placeholder=" " value={this.state.password} onChange={(e)=>this.setState({password:e.target.value})}/>
+                    <input  type="password" className="form__input" placeholder=" " value={password} onChange={(e)=>setPassword(e.target.value)}/>
                     <label htmlFor="" className="form__label">Şifre</label>
                 </div>
                 <div className="login form__div">
                     <label className="container">Beni hatırla
-                    <input type="checkbox" checked={this.state.rememberMe===true} onChange={()=>this.setState(prevState=>({rememberMe:!prevState.rememberMe}))}/>
-                    <span className="checkmark"></span>
-                  </label>
+                        <input type="checkbox" checked={rememberMe===true} onChange={()=>setRememberMe(prev=>(!prev))}/>
+                        <span className="checkmark"></span>
+                    </label>
                 </div>
                 <div className="group">
-                    <input id="submit_btn" type="submit" value="Giriş Yap"/>
+                    <Link to='/'>
+                        <input id="submit_btn" type="submit" value="Giriş Yap" onClick={()=>setIsLogged(true)}/>
+                    </Link>
                 </div>
             </form>
             <div className="toRegister">
@@ -43,9 +40,9 @@ class LoginPage extends Component   {
             </div>
         </div>
         </>
-        )
-    }
+    )
 }
+
 
 
 export default LoginPage

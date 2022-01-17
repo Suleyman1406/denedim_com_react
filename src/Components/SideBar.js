@@ -3,13 +3,16 @@ import styled from 'styled-components';
 import {MdLocationOn} from 'react-icons/md';
 import {BiCommentDetail} from 'react-icons/bi';
 import {AiFillLike} from 'react-icons/ai';
-import {FaUserEdit,FaShareAlt,FaArrowAltCircleRight} from 'react-icons/fa';
+import {FaUserEdit,FaArrowAltCircleRight} from 'react-icons/fa';
 import {RiCoupon2Fill} from 'react-icons/ri';
 import { useMediaPredicate } from "react-media-hook";
 import { useState } from 'react';
 import {MdCategory} from 'react-icons/md';
 import {BsBookmarkCheckFill} from 'react-icons/bs';
+import {RiSendPlaneFill} from 'react-icons/ri'
 import {Link} from "react-router-dom";
+import { useProfile } from '../Context/ProfileContext';
+
  const Bar=styled.div`
     position: ${(props)=>(props.isFixed?  'fixed' : 'absolute' )};
    top: ${(props)=>(props.isFixed?  '-15px' : '' )};
@@ -86,11 +89,7 @@ import {Link} from "react-router-dom";
   }
 `
 
- const BtnIcon=styled.i`
-    float: left;
-    color: black;
-    transform: translate(50%, 25%);
-`
+
 
 const ProfileParag=styled.p`
     font-size: ${(props)=>(props.isName?  '20' : '15' )+'px'};
@@ -126,7 +125,8 @@ const Icon=styled(FaArrowAltCircleRight)`
 `
 
 
-const SideBar = ({isLogged}) => {
+const SideBar = () => {
+    const{isLogged}=useProfile( );
     const biggerThan400 = useMediaPredicate("(max-width: 1350px)");
     const [openBtnDisplay,setOpenBtnDisplay]=useState(false);
     const [scrollPosition, setScrollPosition] = useState(0);
@@ -162,20 +162,20 @@ const SideBar = ({isLogged}) => {
                             Profil
                         </BarBtn>
                         <BarBtn to='category'>
-                                <MdCategory    style={{transform:"translateY(-1px)",float:"left",marginLeft:"10px"}} size={biggerThan400?20:25}  />
-                                Kategoriler
+                            <MdCategory    style={{transform:"translateY(-1px)",float:"left",marginLeft:"10px"}} size={biggerThan400?20:25}  />
+                            Kategoriler
                         </BarBtn>
-                        <BarBtn to=''>
+                        <BarBtn to='saved'>
                             <BsBookmarkCheckFill  style={{transform:"translateY(-1px)",float:"left",marginLeft:"10px"}} size={biggerThan400?20:25} />
                             Kaydedilenler
                         </BarBtn>
                         <BarBtn to=''>
-                            <RiCoupon2Fill  style={{transform:"translateY(-1px)",float:"left",marginLeft:"10px"}} size={biggerThan400?20:25}/>
-                            Kuponlar
+                            <RiSendPlaneFill   style={{transform:"translateY(-1px)",float:"left",marginLeft:"10px"}} size={biggerThan400?21:26} />
+                            Post Paylaş
                         </BarBtn>
                         <BarBtn to=''>
-                            <FaShareAlt   style={{transform:"translateY(-1px)",float:"left",marginLeft:"10px"}} size={biggerThan400?20:25} />
-                            Paylaş
+                            <RiCoupon2Fill  style={{transform:"translateY(-1px)",float:"left",marginLeft:"10px"}} size={biggerThan400?20:25}/>
+                            Kuponlar
                         </BarBtn>
                         
                     </BarContainer>

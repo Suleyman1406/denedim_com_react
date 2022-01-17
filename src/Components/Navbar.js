@@ -5,6 +5,7 @@ import { FaBars } from 'react-icons/fa';
 import {AiFillSetting} from 'react-icons/ai'
 import {MdNotificationsActive} from 'react-icons/md'
 import {BiSearchAlt2} from 'react-icons/bi'
+import { useProfile } from '../Context/ProfileContext';
 const Nav = styled.nav`
     height:57px;
     background-image: linear-gradient(90deg, rgba(139,199,152,1) 0%, rgba(147,178,184,1) 25%, rgba(158,149,200,1) 50%, rgba(149,182,222,1) 75%, rgba(135,208,239,1) 100%);
@@ -333,9 +334,10 @@ const Last=styled.div`
   width: 100%;
 `
 
-const Navbar = ({hasContent,isLogged}) => {
+const Navbar = ({hasContent}) => {
   const[isOpen,setIsOpen] =useState(false);
   const[searchInput,setSearchInput] =useState("");
+  const {isLogged,setIsLogged}=useProfile();
   const [scrollPosition, setScrollPosition] = useState(0);
     const handleScroll = () => {
         const position = window.pageYOffset;
@@ -381,7 +383,7 @@ const Navbar = ({hasContent,isLogged}) => {
                 }
                 {isLogged &&
                   <NavBtnBack>
-                      <NavLoginBtn >Çıkış Yap</NavLoginBtn>
+                      <NavLoginBtn onClick={()=>setIsLogged(false)} >Çıkış Yap</NavLoginBtn>
                   </NavBtnBack>
                 }
                 </LinkR>

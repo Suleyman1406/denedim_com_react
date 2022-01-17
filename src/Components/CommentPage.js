@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import {AiFillLike,AiFillDislike} from 'react-icons/ai'
-import {FaShareAlt} from 'react-icons/fa'
-import {BsBookmarkCheckFill,BsBookmarkPlus} from 'react-icons/bs'
+import { useComments } from '../Context/CommentsContext'
+import { useProfile } from '../Context/ProfileContext'
 
-const ContentContainer=styled.div`
+import Comments from './Comments'
+
+export const ContentContainer=styled.div`
     width: 75%;
     display: ${props=>props.isLogged?'inline-block':'block'};
     position: ${props=>props.isLogged?'absolute':'relative'};
@@ -14,6 +15,7 @@ const ContentContainer=styled.div`
     height: fit-content;
     background-color: white;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    min-height: 900px;
     @media only screen and (max-width: 1350px) {
         width: 70%;
         left: ${props=>props.isLogged?'25%':''};
@@ -142,151 +144,14 @@ const CommentHeader=styled.h4`
         background-color: rgba(220,220,220,0.4);
     }
 `
-const CommentContainer=styled.div`
-    position: relative;
-    width: 94%;
-    margin-right: auto;
-    margin-left: auto;
-    padding: 10px 25px 5px 25px;
-    cursor: pointer;
-    border-bottom: 1px solid rgba(220,220,220,0.7);
-        &::after {
-        content: "";
-        clear: both;
-        display: table;
-    }
-
-`
-
-const CommentImg=styled.img`
-    width: 12%;
-    float: left;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-    padding: 5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    min-width: 70px;
-    max-width: 120px;
-    background-color: white;
-    @media only screen and (max-width: 1150px) {
-       width: 15%;
-    }
-    @media only screen and (max-width: 950px) {
-       width: 18%;
-    }
-    @media only screen and (max-width: 550px) {
-        width: 25%;
-    }
-`
-
-const CommentContentContainer=styled.div`
-    float: left;
-    width: 88%;
-    padding: 15px;
-    @media only screen and (max-width: 1150px) {
-       width: 85%;
-    }
-    @media only screen and (max-width: 950px) {
-       width: 82%;
-    }
-    @media only screen and (max-width: 550px) {
-        
-    }
-`
-
-const ProductName=styled.h5`
-    margin-bottom: 1px;
-    color: rgba(0,0,0,0.7);
-
-`
-const UserName=styled.h6`
-    margin-bottom: 4px;
-    color: black;
-`
-const CommentPrg=styled.p`
-    margin-bottom: 10px;
-    font-size: 14px;
-   
-`
-const LikeNum=styled.p`
-    display: inline-block;
-    transform: translate(-25px,-10px);
-    font-weight: 600;
-    font-size: 14px;
-    color: rgba(0,0,0);
-
-    
-`
-    
-const LikeIcon=styled(AiFillLike)`
-    font-size: 35px;
-    padding: 5px;
-    margin-right: 25px;
-    color: rgba(127, 210, 245);
-    transition: 0.1s all;
-    &:hover{
-        opacity: 0.5;
-       
-    }
-`
-const DisLikeIcon=styled(AiFillDislike)`
-   font-size: 35px;
-    padding: 5px;
-    margin-right: 25px;
-    margin-left: -10px;
-    color: rgba(127, 210, 245);
-    transform: translateY(5px);
-    transition: 0.1s all;
-    &:hover{
-        opacity: 0.5;
-       
-    }
-`
-
-const ShareIcon=styled(FaShareAlt)`
-   font-size: 35px;
-    padding: 5px;
-    color: rgba(127, 210, 245);
-    transform: translateY(3px);
-    transition: 0.1s all;
-    &:hover{
-        opacity: 0.5;
-       
-    }
-`
-
-const SavedIcon=styled(BsBookmarkCheckFill)`
-    font-size: 35px;
-    padding: 5px;
-    position: absolute;
-    right: 10px;
-    top: 15px;
-    color: rgba(127, 210, 245);
-    transition: 0.1s all;
-    &:hover{
-        opacity: 0.5;
-       
-    }
-`
-const AddToSavedIcon=styled(BsBookmarkPlus)`
-    font-size: 35px;
-    padding: 5px;
-    position: absolute;
-    right: 10px;
-    top: 15px;
-    color: rgba(127, 210, 245);
-    transition: 0.1s all;
-    &:hover{
-        opacity: 0.5;
-       
-    }
-`
 
 
 
-const CommentPage = ({isLogged}) => {
+const CommentPage = () => {
     const[isPopSelected,setIsPopSelected]=useState(true);
-  
+    const {comments,setComments}=useComments();
+    const {isLogged}=useProfile();
+    
     return (
         <>
             <ContentContainer isLogged={isLogged}>
@@ -314,230 +179,9 @@ const CommentPage = ({isLogged}) => {
                             Yeni
                         </CommentHeader>
                     </CommentsHeadContainer>
-                    <CommentContainer>
-                    <CommentImg src='images/phone.jpg'/>
-                        <CommentContentContainer>
-                        <UserName style={{fontSize:'16px'}}>Fatih Orkun</UserName>
-                        <ProductName>Samsung Galaxy A52 128GB Siyah Cep Telefonu SM-A525FZKHTUR</ProductName>
-                        <CommentPrg>Ürün güzel fakat size paket mührünün fotoğrafını yolluyorum. Kime gelse bu şekilde, huylanır. Açtım jelatinlerini kendim söktüm evet sıfır telefon ama dikkat edelim</CommentPrg>
-                        <LikeIcon/>
-                        <LikeNum>56</LikeNum>
-                        <DisLikeIcon/>
-                        <LikeNum>8</LikeNum>
 
-                        {false && <SavedIcon/>}
-                        {true && <AddToSavedIcon/>}
-                        <ShareIcon/>
-                        </CommentContentContainer>
-                    </CommentContainer>
-                    <CommentContainer>
-                        <CommentImg src='images/vacuumCleaner.jpg'/>
-                        <CommentContentContainer>
-                        <UserName style={{fontSize:'16px'}} >Fatih Orkun</UserName>
-                        <ProductName>Mini el kuru ve ıslak kablosuz kablosuz elektrik süpürgesi</ProductName>
-                        <CommentPrg>X Marka Elektrik Süpürgesi boyutu küçük ama çok kullanışlı. Cok az yer kaplıyor</CommentPrg>
-                        <LikeIcon/>
-                        <LikeNum>38</LikeNum>
-                        <DisLikeIcon/>
-                        <LikeNum>10</LikeNum>
-
-                        {false && <SavedIcon/>}
-                        {true && <AddToSavedIcon/>}
-                        <ShareIcon/>
-                        </CommentContentContainer>
-                    </CommentContainer>
-                    <CommentContainer>
-                        <CommentImg src='images/phone.jpg'/>
-                        <CommentContentContainer>
-                        <UserName style={{fontSize:'16px'}}>Emre Usta</UserName>
-                        <ProductName>Samsung Galaxy A52 128GB Siyah Cep Telefonu SM-A525FZKHTUR</ProductName>
-                        <CommentPrg>Kamerası mükemmel  iki örnek  bırakıyorum aşağı. Sesi ve ekranida güzel şimdilik bir sıkıntı yok. Şu esneme  sorununa yok çok şükür.</CommentPrg>
-                        <LikeIcon/>
-                        <LikeNum>28</LikeNum>
-                        <DisLikeIcon/>
-                        <LikeNum>5</LikeNum>
-
-                        {true && <SavedIcon/>}
-                        {false && <AddToSavedIcon/>}
-                        <ShareIcon/>
-                        </CommentContentContainer>
-                    </CommentContainer>
-                    <CommentContainer>
-                        <CommentImg src='images/vacuumCleaner.jpg'/>
-                        <CommentContentContainer>
-                        <UserName style={{fontSize:'16px'}}>Anonim</UserName>
-                        <ProductName>Mini el kuru ve ıslak kablosuz kablosuz elektrik süpürgesi</ProductName>
-                        <CommentPrg>X Marka Elektrik Süpürgesi boyutu küçük ama çok kullanışlı. Cok az yer kaplıyor</CommentPrg>
-                        <LikeIcon/>
-                        <LikeNum>22</LikeNum>
-                        <DisLikeIcon/>
-                        <LikeNum>2</LikeNum>
-
-                        {false && <SavedIcon/>}
-                        {true && <AddToSavedIcon/>}
-                        <ShareIcon/>
-                        </CommentContentContainer>
-                    </CommentContainer>
-                    <CommentContainer>
-                        <CommentImg src='images/phone.jpg'/>
-                        <CommentContentContainer>
-                        <UserName style={{fontSize:'16px'}}>Fatih Orkun</UserName>
-                        <ProductName>Samsung Galaxy A52 128GB Siyah Cep Telefonu SM-A525FZKHTUR</ProductName>
-                        <CommentPrg>Ürün güzel fakat size paket mührünün fotoğrafını yolluyorum. Kime gelse bu şekilde, huylanır. Açtım jelatinlerini kendim söktüm evet sıfır telefon ama dikkat edelim</CommentPrg>
-                        <LikeIcon/>
-                        <LikeNum>56</LikeNum>
-                        <DisLikeIcon/>
-                        <LikeNum>8</LikeNum>
-
-                        {false && <SavedIcon/>}
-                        {true && <AddToSavedIcon/>}
-                        <ShareIcon/>
-                        </CommentContentContainer>
-                    </CommentContainer>
-                    <CommentContainer>
-                        <CommentImg src='images/vacuumCleaner.jpg'/>
-                        <CommentContentContainer>
-                        <UserName style={{fontSize:'16px'}}>Anonim</UserName>
-                        <ProductName>Mini el kuru ve ıslak kablosuz kablosuz elektrik süpürgesi</ProductName>
-                        <CommentPrg>X Marka Elektrik Süpürgesi boyutu küçük ama çok kullanışlı. Cok az yer kaplıyor</CommentPrg>
-                        <LikeIcon/>
-                        <LikeNum>38</LikeNum>
-                        <DisLikeIcon/>
-                        <LikeNum>10</LikeNum>
-
-                        {false && <SavedIcon/>}
-                        {true && <AddToSavedIcon/>}
-                        <ShareIcon/>
-                        </CommentContentContainer>
-                    </CommentContainer>
-                    <CommentContainer>
-                        <CommentImg src='images/phone.jpg'/>
-                        <CommentContentContainer>
-                        <UserName style={{fontSize:'16px'}}>Emre Usta</UserName>
-                        <ProductName>Samsung Galaxy A52 128GB Siyah Cep Telefonu SM-A525FZKHTUR</ProductName>
-                        <CommentPrg>Kamerası mükemmel  iki örnek  bırakıyorum aşağı. Sesi ve ekranida güzel şimdilik bir sıkıntı yok. Şu esneme  sorununa yok çok şükür.</CommentPrg>
-                        <LikeIcon/>
-                        <LikeNum>28</LikeNum>
-                        <DisLikeIcon/>
-                        <LikeNum>5</LikeNum>
-
-                        {true && <SavedIcon/>}
-                        {false && <AddToSavedIcon/>}
-                        <ShareIcon/>
-                        </CommentContentContainer>
-                    </CommentContainer>
-                    <CommentContainer>
-                    <CommentImg src='images/phone.jpg'/>
-                        <CommentContentContainer>
-                        <UserName style={{fontSize:'16px'}}>Fatih Orkun</UserName>
-                        <ProductName>Samsung Galaxy A52 128GB Siyah Cep Telefonu SM-A525FZKHTUR</ProductName>
-                        <CommentPrg>Ürün güzel fakat size paket mührünün fotoğrafını yolluyorum. Kime gelse bu şekilde, huylanır. Açtım jelatinlerini kendim söktüm evet sıfır telefon ama dikkat edelim</CommentPrg>
-                        <LikeIcon/>
-                        <LikeNum>56</LikeNum>
-                        <DisLikeIcon/>
-                        <LikeNum>8</LikeNum>
-
-                        {false && <SavedIcon/>}
-                        {true && <AddToSavedIcon/>}
-                        <ShareIcon/>
-                        </CommentContentContainer>
-                    </CommentContainer>
-                    <CommentContainer>
-                        <CommentImg src='images/vacuumCleaner.jpg'/>
-                        <CommentContentContainer>
-                        <UserName style={{fontSize:'16px'}} >Fatih Orkun</UserName>
-                        <ProductName>Mini el kuru ve ıslak kablosuz kablosuz elektrik süpürgesi</ProductName>
-                        <CommentPrg>X Marka Elektrik Süpürgesi boyutu küçük ama çok kullanışlı. Cok az yer kaplıyor</CommentPrg>
-                        <LikeIcon/>
-                        <LikeNum>38</LikeNum>
-                        <DisLikeIcon/>
-                        <LikeNum>10</LikeNum>
-
-                        {false && <SavedIcon/>}
-                        {true && <AddToSavedIcon/>}
-                        <ShareIcon/>
-                        </CommentContentContainer>
-                    </CommentContainer>
-                    <CommentContainer>
-                        <CommentImg src='images/phone.jpg'/>
-                        <CommentContentContainer>
-                        <UserName style={{fontSize:'16px'}}>Emre Usta</UserName>
-                        <ProductName>Samsung Galaxy A52 128GB Siyah Cep Telefonu SM-A525FZKHTUR</ProductName>
-                        <CommentPrg>Kamerası mükemmel  iki örnek  bırakıyorum aşağı. Sesi ve ekranida güzel şimdilik bir sıkıntı yok. Şu esneme  sorununa yok çok şükür.</CommentPrg>
-                        <LikeIcon/>
-                        <LikeNum>28</LikeNum>
-                        <DisLikeIcon/>
-                        <LikeNum>5</LikeNum>
-
-                        {true && <SavedIcon/>}
-                        {false && <AddToSavedIcon/>}
-                        <ShareIcon/>
-                        </CommentContentContainer>
-                    </CommentContainer>
-                    <CommentContainer>
-                        <CommentImg src='images/vacuumCleaner.jpg'/>
-                        <CommentContentContainer>
-                        <UserName style={{fontSize:'16px'}}>Anonim</UserName>
-                        <ProductName>Mini el kuru ve ıslak kablosuz kablosuz elektrik süpürgesi</ProductName>
-                        <CommentPrg>X Marka Elektrik Süpürgesi boyutu küçük ama çok kullanışlı. Cok az yer kaplıyor</CommentPrg>
-                        <LikeIcon/>
-                        <LikeNum>22</LikeNum>
-                        <DisLikeIcon/>
-                        <LikeNum>2</LikeNum>
-
-                        {false && <SavedIcon/>}
-                        {true && <AddToSavedIcon/>}
-                        <ShareIcon/>
-                        </CommentContentContainer>
-                    </CommentContainer>
-                    <CommentContainer>
-                        <CommentImg src='images/phone.jpg'/>
-                        <CommentContentContainer>
-                        <UserName style={{fontSize:'16px'}}>Fatih Orkun</UserName>
-                        <ProductName>Samsung Galaxy A52 128GB Siyah Cep Telefonu SM-A525FZKHTUR</ProductName>
-                        <CommentPrg>Ürün güzel fakat size paket mührünün fotoğrafını yolluyorum. Kime gelse bu şekilde, huylanır. Açtım jelatinlerini kendim söktüm evet sıfır telefon ama dikkat edelim</CommentPrg>
-                        <LikeIcon/>
-                        <LikeNum>56</LikeNum>
-                        <DisLikeIcon/>
-                        <LikeNum>8</LikeNum>
-
-                        {false && <SavedIcon/>}
-                        {true && <AddToSavedIcon/>}
-                        <ShareIcon/>
-                        </CommentContentContainer>
-                    </CommentContainer>
-                    <CommentContainer>
-                        <CommentImg src='images/vacuumCleaner.jpg'/>
-                        <CommentContentContainer>
-                        <UserName style={{fontSize:'16px'}}>Anonim</UserName>
-                        <ProductName>Mini el kuru ve ıslak kablosuz kablosuz elektrik süpürgesi</ProductName>
-                        <CommentPrg>X Marka Elektrik Süpürgesi boyutu küçük ama çok kullanışlı. Cok az yer kaplıyor</CommentPrg>
-                        <LikeIcon/>
-                        <LikeNum>38</LikeNum>
-                        <DisLikeIcon/>
-                        <LikeNum>10</LikeNum>
-
-                        {false && <SavedIcon/>}
-                        {true && <AddToSavedIcon/>}
-                        <ShareIcon/>
-                        </CommentContentContainer>
-                    </CommentContainer>
-                    <CommentContainer>
-                        <CommentImg src='images/phone.jpg'/>
-                        <CommentContentContainer>
-                        <UserName style={{fontSize:'16px'}}>Emre Usta</UserName>
-                        <ProductName>Samsung Galaxy A52 128GB Siyah Cep Telefonu SM-A525FZKHTUR</ProductName>
-                        <CommentPrg>Kamerası mükemmel  iki örnek  bırakıyorum aşağı. Sesi ve ekranida güzel şimdilik bir sıkıntı yok. Şu esneme  sorununa yok çok şükür.</CommentPrg>
-                        <LikeIcon/>
-                        <LikeNum>28</LikeNum>
-                        <DisLikeIcon/>
-                        <LikeNum>5</LikeNum>
-
-                        {true && <SavedIcon/>}
-                        {false && <AddToSavedIcon/>}
-                        <ShareIcon/>
-                        </CommentContentContainer>
-                    </CommentContainer>
+                    <Comments comments={comments} setComments={setComments}/>
+                
   
             </CommentsContainer>
             </ContentContainer>

@@ -6,37 +6,9 @@ import {BsWatch} from 'react-icons/bs'
 import {IoFastFoodOutline} from 'react-icons/io5'
 import {FaLaptopCode} from 'react-icons/fa'
 import {MdOutlineElectricalServices ,MdSportsVolleyball,MdCardTravel} from 'react-icons/md'
+import { ContentContainer as Container } from './CommentPage'
+import { useProfile } from '../Context/ProfileContext'
 
-const Container = styled.div`
-    width: 75%;
-    display: ${props=>props.isLogged?'inline-block':'block'};
-    position: ${props=>props.isLogged?'absolute':'relative'};
-    left: ${props=>props.isLogged?'20%':''};
-    margin: ${props=>props.isLogged?'20px 35px':'20px auto'};
-    height: fit-content;
-    padding: 20px;
-    background-color: white;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    @media only screen and (max-width: 1350px) {
-        width: 70%;
-        left: ${props=>props.isLogged?'25%':''};
-        margin: ${props=>props.isLogged?'20px 30px':'20px auto'};
-
-    }
-    @media only screen and (max-width: 900px) {
-        width: 65%;
-        left: ${props=>props.isLogged?'30%':''};
-        margin: ${props=>props.isLogged?'10px 25px':'10px auto'};
-
-    }
-    @media only screen and (max-width: 750px) {
-        left: ${props=>props.isLogged?'5%':''};
-        margin: ${props=>props.isLogged?'15px 10px':'15px auto'};
-
-        width: 90%;
-      
-    }
-`
 const CategoryContainer=styled.div`
     width: 90%;
     margin-top: 20px;
@@ -117,10 +89,10 @@ const CategoryFoot=styled.div`
     }
 `
 
-const Category = ({isLogged}) => {
+const Category = () => {
     let arr=['Elektronik','Giyim','Kozmetik','Kırtasiye','Spor','Saat & Aksesuar','Yaşam/Hobi','Dekorasyon','Gıda','Teknoloji','Yazılım','Seyahat'];
     let color=['f39893','7f9bb9','2e74a5','a4c98e','50b4ad','b187b8','208487','75bad1','76819f','eb9f6e','5e758c','e8c05a'];
-    const someHtml='<_serv/>';
+    const{isLogged}=useProfile();
     return (
         <>
             <Container isLogged={isLogged}>
