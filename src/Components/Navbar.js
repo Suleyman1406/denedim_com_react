@@ -381,11 +381,6 @@ const Navbar = ({hasContent}) => {
                       <NavLoginBtn >Giriş Yap</NavLoginBtn>
                   </NavBtnBack>
                 }
-                {isLogged &&
-                  <NavBtnBack>
-                      <NavLoginBtn onClick={()=>setIsLogged(false)} >Çıkış Yap</NavLoginBtn>
-                  </NavBtnBack>
-                }
                 </LinkR>
               <NavBtnBack>
                   <NavBtnNotf style={{color:'rgba(125, 125, 125)',padding:'7px'}}/>

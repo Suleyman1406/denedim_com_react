@@ -145,8 +145,8 @@ const AddToSavedIcon=styled(BsBookmarkPlus)`
 
 
 
-const Comments = ({comments,setComments}) => {
-    const{isLogged,savedCommentsId,setSavedCommentsId,likedCommentsId,unLikedCommentsId,setLikedCommentsId,setUnLikedCommentsId}=useProfile();
+const Comments = ({comments}) => {
+    const{user,setUser,isLogged,savedCommentsId,setSavedCommentsId,likedCommentsId,unLikedCommentsId,setLikedCommentsId,setUnLikedCommentsId}=useProfile();
     const removeFromArr=(id,arr)=>{
         const index = arr.indexOf(id);
         if (index > -1) {
@@ -167,17 +167,17 @@ const Comments = ({comments,setComments}) => {
         let comment=comments.filter(e=>e.id===id)[0];
         if(!likedCommentsId.includes(id)){
             setLikedCommentsId([...likedCommentsId,id]);
-            console.log(unLikedCommentsId);
             if(unLikedCommentsId.includes(id)){
                 removeFromArr(id,unLikedCommentsId);
                 comment.unlikeNum--;
             }
             comment.likeNum++;
-            
+            user.likeCount++;
         } else{
             removeFromArr(id,likedCommentsId);
             comment.likeNum--;
             setLikedCommentsId([...likedCommentsId])
+            user.likeCount--;
         }    
     }
     const dislike=(id)=>{
@@ -187,6 +187,8 @@ const Comments = ({comments,setComments}) => {
             if(likedCommentsId.includes(id)){
                 removeFromArr(id,likedCommentsId);
                 comment.likeNum--;
+                user.likeCount--;
+
             }
             comment.unlikeNum++;
             
@@ -204,7 +206,7 @@ const Comments = ({comments,setComments}) => {
                     return <CommentContainer key={com.id}>
                                 <CommentImg src={com.image}/>
                                 <CommentContentContainer>
-                                    <UserName style={{fontSize:'16px'}}>{com.userName}</UserName>
+                                    <UserName style={{fontSize:'16px'}}>{com.userName}<p style={{color:'rgba(0,0,0,0.9)',fontWeight:'500',display:'inline',fontSize:'13px'}}>  @{com.nickname}</p></UserName>
                                     <ProductName>{com.productName}</ProductName>
                                     <CommentPrg>{com.comment}</CommentPrg>
                                     <LikeIcon onClick={()=>like(com.id)} style={likedCommentsId.includes(com.id)? {color:'#f1c40f'}:{}}/>

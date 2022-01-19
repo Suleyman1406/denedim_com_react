@@ -153,11 +153,11 @@ const SideBar = () => {
                             
                             <ProfileParag isName={true} >Hande Işıklı</ProfileParag>
                             <ProfileParag isName={false}><MdLocationOn style={{transform:"translateY(3px)",float:"left"}}/> Denizli, Turkey</ProfileParag>
-                            <ProfileParag isName={false}><BiCommentDetail style={{transform:"translateY(3px)",float:"left"}}/> 109 Yorum</ProfileParag>
-                            <ProfileParag isName={false}><AiFillLike style={{transform:"translateY(3px)",float:"left"}}/> 82 begenme</ProfileParag>
+                            <ProfileParag isName={false}><BiCommentDetail style={{transform:"translateY(3px)",float:"left"}}/> 109 yorum</ProfileParag>
+                            <ProfileParag isName={false}><AiFillLike style={{transform:"translateY(3px)",float:"left"}}/> 82 beğeni</ProfileParag>
                         </ProfileContainer>
                     
-                        <BarBtn to=''>
+                        <BarBtn to='profile'>
                             <FaUserEdit  style={{transform:"translateY(-1px)",float:"left",marginLeft:"10px"}}  size={biggerThan400?20:25} />
                             Profil
                         </BarBtn>

@@ -4,14 +4,14 @@ import SideBar from './SideBar'
 
 import { Outlet } from "react-router-dom";
 
-const Home = ({isLogged,setIsLogged}) => {
+const Home = () => {
 
 
     return (
             <div>
-                <Navbar hasContent={true} isLogged={isLogged} setIsLogged={setIsLogged}/>
-                <SideBar  isLogged={isLogged}/>
-                <Outlet isLogged={isLogged}/>
+                <Navbar hasContent={true}/>
+                <SideBar  />
+                <Outlet />
             </div>
     )
 }

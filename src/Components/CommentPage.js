@@ -14,6 +14,7 @@ export const ContentContainer=styled.div`
     padding-top:${props=>props.isLogged?'0px':'10px'} ;
     height: fit-content;
     background-color: white;
+    border-radius: 1px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     min-height: 900px;
     @media only screen and (max-width: 1350px) {
