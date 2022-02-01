@@ -122,7 +122,7 @@ const SavedIcon=styled(BsBookmarkCheckFill)`
     position: absolute;
     right: 10px;
     top: 15px;
-    color: rgba(127, 210, 245);
+    color: rgb(158,149,200);
     transition: 0.1s all;
     &:hover{
         opacity: 0.5;
@@ -209,9 +209,9 @@ const Comments = ({comments}) => {
                                     <UserName style={{fontSize:'16px'}}>{com.userName}<p style={{color:'rgba(0,0,0,0.9)',fontWeight:'500',display:'inline',fontSize:'13px'}}>  @{com.nickname}</p></UserName>
                                     <ProductName>{com.productName}</ProductName>
                                     <CommentPrg>{com.comment}</CommentPrg>
-                                    <LikeIcon onClick={()=>like(com.id)} style={likedCommentsId.includes(com.id)? {color:'#f1c40f'}:{}}/>
+                                    <LikeIcon onClick={()=>like(com.id)} style={likedCommentsId.includes(com.id)? {color:'rgb(158,149,200)'}:{}}/>
                                     <LikeNum >{com.likeNum}</LikeNum>
-                                    <DisLikeIcon onClick={()=>dislike(com.id)} style={unLikedCommentsId.includes(com.id)? {color:'#f1c40f'}:{}}/>
+                                    <DisLikeIcon onClick={()=>dislike(com.id)} style={unLikedCommentsId.includes(com.id)? {color:'rgb(158,149,200)'}:{}}/>
                                     <LikeNum >{com.unlikeNum}</LikeNum>
 
                                     {isLogged && 

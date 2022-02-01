@@ -72,6 +72,7 @@ import { useProfile } from '../Context/ProfileContext';
     font-size: 16px;
     display: inline-block;
     font-weight: 800;
+    
     color: black;
     border:none;
     text-align: center;
@@ -95,7 +96,7 @@ const ProfileParag=styled.p`
     font-size: ${(props)=>(props.isName?  '20' : '15' )+'px'};
     padding: 10px;
     color: ${(props)=>(props.isName?  'black' : '#87d0ef' )} ;
-    font-weight: ${(props)=>(props.isName?  '600' : '300' )} ;
+    font-weight: ${(props)=>(props.isName?  '600' : '500' )} ;
     transition: 0.2s all ;
     cursor: pointer;
     &:hover{
@@ -136,7 +137,6 @@ const SideBar = () => {
     };
     useEffect(() => {
         window.addEventListener('scroll', handleScroll, { passive: true });
-
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
@@ -169,7 +169,7 @@ const SideBar = () => {
                             <BsBookmarkCheckFill  style={{transform:"translateY(-1px)",float:"left",marginLeft:"10px"}} size={biggerThan400?20:25} />
                             Kaydedilenler
                         </BarBtn>
-                        <BarBtn to=''>
+                        <BarBtn to='share'>
                             <RiSendPlaneFill   style={{transform:"translateY(-1px)",float:"left",marginLeft:"10px"}} size={biggerThan400?21:26} />
                             Post Paylaş
                         </BarBtn>

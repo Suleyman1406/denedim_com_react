@@ -10,7 +10,7 @@ export const ContentContainer=styled.div`
     display: ${props=>props.isLogged?'inline-block':'block'};
     position: ${props=>props.isLogged?'absolute':'relative'};
     left: ${props=>props.isLogged?'20%':''};
-    margin: ${props=>props.isLogged?'20px 35px':'20px auto'};
+    margin: ${props=>props.isLogged?'20px 2.5%':'20px auto'};
     padding-top:${props=>props.isLogged?'0px':'10px'} ;
     height: fit-content;
     background-color: white;
@@ -53,7 +53,7 @@ const TodayContainer=styled.div`
 const TodayElement=styled.div`
     width: 42%;
     position: relative;
-    height: fit-content;
+    height: 150px;
     padding: 10px 20px 20px 20px;
     display: inline-block;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
@@ -67,17 +67,24 @@ const TodayElement=styled.div`
         box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
         cursor: pointer;    
     }
-    @media only screen and (max-width: 1150px) {
+    @media only screen and (max-width: 1350px) {
         width: 80%;
+        height: 165px;
         margin-right: 0!important;
         margin-left: 0!important;
         margin-top:20px;
     }
     @media only screen and (max-width: 1150px) {
         width: 90%;
+        height: 180px;
         margin-right: 0!important;
         margin-left: 0!important;
         margin-top:20px;
+    }
+    @media only screen and (max-width: 850px) {
+        width: 90%;
+        height: 150px;
+        
     }
 `
 
@@ -90,17 +97,12 @@ const TodayHeader=styled.h3`
     color: rgba(127, 210, 245);
 `
 const TodayImg=styled.img`
-    width: 15%;
-    min-width: 70px;
+    height: 70%;
     padding: 2px;
     float: left;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
     transition: 0.7s all ease-in-out;
-    &:hover{
-        width: 30%;
-        margin-bottom: 5px;
-        transition-delay:0.3s;
-    }
+    
 `
 const TodayPrg=styled.p`
     width: 80%;

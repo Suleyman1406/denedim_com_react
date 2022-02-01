@@ -1,14 +1,15 @@
 import React, {  useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useProfile } from '../Context/ProfileContext'
-import {BiCommentDetail} from 'react-icons/bi';
-import {MdLocationOn} from 'react-icons/md';
-import {AiFillLike} from 'react-icons/ai';
+import {BiCommentDetail,BiInfoCircle} from 'react-icons/bi';
+import {MdOutlineWorkOutline} from 'react-icons/md';
+import {AiOutlineLike} from 'react-icons/ai';
 import Comments from './Comments';
 import { useComments } from '../Context/CommentsContext';
 import {HiOutlineLogout} from 'react-icons/hi'
 import { Link } from 'react-router-dom';
 import {RiUserSettingsLine} from 'react-icons/ri'
+import {GoLocation} from 'react-icons/go'
 const Container=styled.div`
     width: 85%;
     height: fit-content;
@@ -20,14 +21,20 @@ const Container=styled.div`
 `
 const Top=styled.div`
     height: 60px;
-    background-color: #f9ca24;
+    background-color: rgb(158,149,200);
     padding: 0px 40px;
     overflow: hidden;
 `
 const TopName=styled.h1`
     margin-left: 145px;
-    color: #ecf0f1;
+    color: black;
     transform: translateY(37px);
+    display: inline-block;
+    background-color: rgba(255,255,255,0.3);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding-right: 3px;
+    padding-left: 3px;
 `
 
 const Header=styled.div`
@@ -63,10 +70,12 @@ const H1=styled.h1`
     display: inline;
     margin-left: 15px;
     transform: translateY(-23px);
+    padding-right: 3px;
+    padding-left: 3px;
 
 `
 const Nickname=styled.h4`
-    transform: translate(15px,-25px);
+    transform: translate(18px,-25px);
     opacity: 0.7;
     
 `
@@ -89,14 +98,15 @@ const ButtonContainer=styled.div`
 `
 const Text=styled.p`
     font-weight: 600;
-    color: #f9ca24;
+    color:rgb(158,149,200);
     transform: translate(10px,-10px);
+    cursor: pointer;
 `
 
 const AboutContainer=styled.div`
     margin-left: 15px;
     margin-right: 15px;
-    margin-top: 25px;
+    margin-top: 30px;
     padding: 20px 40px;
     background-color: rgba(220,220,220,0.2);
     border-radius: 20px;
@@ -145,7 +155,7 @@ const Profile = () => {
         else
         a=comments.filter((com)=>savedCommentsId.includes(com.id))
         setSelectedComments([...a]);
-    },[selected,userCommentsId,likedCommentsId,savedCommentsId,unLikedCommentsId])
+    },[selected,userCommentsId,likedCommentsId,savedCommentsId,unLikedCommentsId,comments])
     return (
         <Container>
             <Top><TopName>{user.name+" "+user.surname}</TopName></Top>
@@ -174,12 +184,20 @@ const Profile = () => {
                     {user.commentCount} yorum
                 </Text>
                 <Text style={{float:"left",marginRight:'25px'}}>
-                    <AiFillLike style={{transform:"translateY(-3px)",float:"left",fontSize:'25px',marginRight:'5px'}}/>
+                    <AiOutlineLike style={{transform:"translateY(-3px)",float:"left",fontSize:'25px',marginRight:'5px'}}/>
                     {user.likeCount} beğeni
                 </Text>
                 <Text style={{float:"left",marginRight:'25px'}}>
-                    <MdLocationOn style={{transform:"translateY(-3px)",float:"left",fontSize:'25px',marginRight:'5px'}}/>
+                    <GoLocation style={{transform:"translateY(-3px)",float:"left",fontSize:'25px',marginRight:'5px'}}/>
                     {user.location} 
+                </Text>
+                <Text style={{float:"left",marginRight:'25px'}}>
+                    <BiInfoCircle style={{transform:"translateY(-3px)",float:"left",fontSize:'25px',marginRight:'5px'}}/>
+                    {user.age+" yaş"} 
+                </Text>
+                <Text style={{float:"left",marginRight:'25px'}}>
+                    <MdOutlineWorkOutline style={{transform:"translateY(-3px)",float:"left",fontSize:'25px',marginRight:'5px'}}/>
+                    {user.job} 
                 </Text>
             </Header>        
             <AboutContainer>

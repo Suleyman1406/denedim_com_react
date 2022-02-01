@@ -11,6 +11,7 @@ import { ProfileProvider } from './Context/ProfileContext';
 import { CommentsProvider } from './Context/CommentsContext';
 import Profile from './Components/Profile';
 import RequireAuth from './Components/PrivateRoute';
+import PostShare from './Components/PostShare';
 function App() {
   return (
     <CommentsProvider>
@@ -21,6 +22,11 @@ function App() {
                 <Route index element={<CommentPage  />} />
                 <Route path="category" element={<Category />} />
                 <Route path="saved" element={<SavedComments />}/>
+                <Route path="/share" element={
+                  <RequireAuth>
+                    <PostShare/>
+                  </RequireAuth>
+                }/>
             </Route>
             <Route  path="/register" element={
               <>
@@ -40,6 +46,7 @@ function App() {
                 <Profile/>
               </RequireAuth>
             }/>
+            
           </Routes>
         </Router>
       </ProfileProvider>
