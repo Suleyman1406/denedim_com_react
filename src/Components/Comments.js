@@ -146,7 +146,7 @@ const AddToSavedIcon=styled(BsBookmarkPlus)`
 
 
 const Comments = ({comments}) => {
-    const{user,setUser,isLogged,savedCommentsId,setSavedCommentsId,likedCommentsId,unLikedCommentsId,setLikedCommentsId,setUnLikedCommentsId}=useProfile();
+    const{user,isLogged,savedCommentsId,setSavedCommentsId,likedCommentsId,unLikedCommentsId,setLikedCommentsId,setUnLikedCommentsId}=useProfile();
     const removeFromArr=(id,arr)=>{
         const index = arr.indexOf(id);
         if (index > -1) {

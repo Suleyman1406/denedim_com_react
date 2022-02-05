@@ -5,15 +5,18 @@ import { ContentContainer as Container } from './CommentPage'
 import CreatableSelect from 'react-select/creatable'
 import {BsDownload} from 'react-icons/bs'
 import {AiFillCloseSquare} from 'react-icons/ai'
+
 const PostShareContainer=styled.div`
     padding: 15px 20px;
+    
 `
 const Header=styled.h2`
     display: inline-block;
     margin-left: 15px;
     padding: 15px 5px 15px 0px;
-    cursor: pointer;
     border-bottom:3px solid rgb(158,149,200);
+    cursor: pointer;
+    
 `
 const BodyContainer=styled.div`
     width: 100%;
@@ -60,6 +63,12 @@ const ImagesContainer=styled.div`
     width: 80%;
     height: 150px;
     display: inline-block;
+    @media only screen and (max-width: 1300px) {
+        width: 100%;
+    }
+    @media only screen and (max-width: 600px) {
+       height: 120px;
+    }
 `
 
 const ImageInput=styled.label`
@@ -70,19 +79,33 @@ const ImageInput=styled.label`
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
     font-weight: 600;
-    transform: translateY(-50px);
+    transform: translateY(-48px);
     transition: 0.3s all;
+    cursor: pointer;
     &:hover{
         opacity: 0.8;
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-
+    }
+    @media only screen and (max-width: 1100px) {
+        font-size: 14px;
+        width: 120px;
+    }
+    @media only screen and (max-width: 600px) {
+        padding: 30px 8px;
+        transform: translateY(-62px);
+    }
+    @media only screen and (max-width: 500px) {
+        width: 90px;
+        font-size: 12px;
+        padding: 30px 2px;
+        transform: translateY(-62px);
     }
 `
 const ImageContainer=styled.div`
     height: 150px;
-    width: 750px;
     display: inline-block;
     position: relative;
+    
 `
 const Image=styled.img`
     width: 150px;
@@ -94,8 +117,21 @@ const Image=styled.img`
     left:${props=>props.i*75+"px"};
     z-index: ${props=>10-props.i};
     margin-left: 5px;
-    object-fit:cover;
+    object-fit:contain;
     object-position:50% 50%;
+     @media only screen and (max-width: 1100px) {
+        width: 100px;
+        left:${props=>props.i*50+"px"};
+    }
+    @media only screen and (max-width: 600px) {
+       height: 120px;
+       width: 80px;
+       left:${props=>props.i*40+"px"};
+    }
+    @media only screen and (max-width: 500px) {
+       width: 50px;
+       left:${props=>props.i*25+"px"};
+    }
 `
 const DeleteBtn=styled(AiFillCloseSquare)`
     position: absolute;
@@ -103,11 +139,22 @@ const DeleteBtn=styled(AiFillCloseSquare)`
     top: 5px;
     left:${props=>(props.i*75)+130+"px"};
     font-size: 20px;
+    
     color: #cb2027;
     transition: 0.2s all;
     background-color: white;
     &:hover{
         opacity: 0.9;
+    }
+    @media only screen and (max-width: 1100px) {
+        left:${props=>(props.i*50)+80+"px"};
+    }
+    @media only screen and (max-width: 600px) {
+        left:${props=>(props.i*40)+60+"px"};
+    }
+    @media only screen and (max-width: 500px) {
+        left:${props=>(props.i*25)+35+"px"};
+
     }
 
 `
@@ -116,6 +163,13 @@ const ButtonContainer=styled.div`
     height: 150px;
     display: inline-block;
     text-align: end;
+    @media only screen and (max-width: 1300px) {
+        width: 100%;
+        margin-top: 15px;
+    }
+    @media screen and (max-width: 600px){
+        margin-top: -10px;
+    }
 `
 
 const ShareButton=styled.button`
@@ -131,6 +185,14 @@ const ShareButton=styled.button`
     transition: 0.2s all;
     &:hover{
         box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    }
+    @media only screen and (max-width: 1300px) {
+        transform: translateY(0);
+        width: 100%;
+        font-size: 19px;
+    }
+    @media only screen and (max-width: 600px) {
+       font-size: 17px;
     }
 `
 

@@ -18,6 +18,11 @@ const Container=styled.div`
     background-color: white;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 1px;
+    
+    transition: 1s all;
+    @media only screen and (max-width: 1100px) {
+        width: 95%;
+    };
 `
 const Top=styled.div`
     height: 60px;
@@ -35,12 +40,17 @@ const TopName=styled.h1`
     border-top-right-radius: 15px;
     padding-right: 3px;
     padding-left: 3px;
+    @media only screen and (max-width: 950px) {
+        display: none;
+    }
 `
 
 const Header=styled.div`
     padding: 0px 40px;
     position: relative;
-
+    @media only screen and (max-width: 950px) {
+        text-align:center;
+    }
 `
 const ImageContainer=styled.div`
     width: fit-content;
@@ -53,6 +63,12 @@ const ImageContainer=styled.div`
     background-color: white;
     float: left;
     margin-top: -50px;
+    @media only screen and (max-width: 950px) {
+       float:none;   
+       height: 120px;
+       width: 120px;
+       display:inline-block ;
+    }
 `
 const Image=styled.img`
     padding: 0px;
@@ -60,11 +76,18 @@ const Image=styled.img`
     height: 120px;
     line-height: 50px;
     border-radius: 50%;
+    @media only screen and (max-width: 950px) {
+
+    }
 `
 const NameContainer=styled.div`
     display: flex;
     overflow: hidden;
     height: fit-content;
+    @media only screen and (max-width: 950px) {
+        text-align: center;
+        display: block;
+    }
 `
 const H1=styled.h1`
     display: inline;
@@ -72,12 +95,20 @@ const H1=styled.h1`
     transform: translateY(-23px);
     padding-right: 3px;
     padding-left: 3px;
+    @media only screen and (max-width: 950px) {
+        transform: translateY(0);
+    }
+    @media only screen and (max-width: 500px) {
+        font-size: 25px!important;
+    }
 
 `
 const Nickname=styled.h4`
     transform: translate(18px,-25px);
     opacity: 0.7;
-    
+    @media only screen and (max-width: 950px) {
+    transform: translateY(-5px);
+    }
 `
 const ButtonContainer=styled.div`
     display: flex;
@@ -87,7 +118,7 @@ const ButtonContainer=styled.div`
     border-radius: 50px;
     align-items: center;
     top: -25px;
-    right: 25px;
+    right:${props=>props.isFirst?'25px':'150px'};
     color: black;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
     transition: 0.2s all;
@@ -95,12 +126,56 @@ const ButtonContainer=styled.div`
         transform: translateY(-2px);
         background-color: rgba(245,245,245);
     }
+    @media only screen and (max-width: 950px) {
+        right:${props=>props.isFirst?'25px':'100px'};
+        padding: 13px;
+        top: -24px;
+    }
+    @media only screen and (max-width: 600px) {
+        right:${props=>props.isFirst?'5px':'60px'};
+        top: -22px;
+        padding: 11px;
+    }
+    @media only screen and (max-width: 400px) {
+        top:${props=>props.isFirst?'0px':'-50px'};
+        right: 10px;
+        padding: 11px;
+    }
+   
 `
+const ButtonText=styled.h4`
+    display:'inline';
+    margin-left: 5px;
+    @media only screen and (max-width: 950px) {
+        display: none!important;
+    }
+`
+
 const Text=styled.p`
     font-weight: 600;
     color:rgb(158,149,200);
     transform: translate(10px,-10px);
     cursor: pointer;
+    @media only screen and (max-width: 950px) {
+        display: inline-block;
+        transform: translate(0);
+        width: 25%;
+        margin-right: 5px!important;
+        margin-bottom: 10px;
+        float: none!important;
+    }
+    @media only screen and (max-width: 800px) {
+        width: 35%;
+        margin-bottom: 5px;
+    }
+    @media only screen and (max-width: 600px) {
+        width: 48%;
+        margin-bottom: 5px;
+    }
+    @media only screen and (max-width: 400px) {
+        width: 100%;
+        margin-bottom: 5px;
+    }
 `
 
 const AboutContainer=styled.div`
@@ -113,6 +188,9 @@ const AboutContainer=styled.div`
     border:1px dashed;
     border-color: rgba(192,192,192,0.4);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    @media only screen and (max-width: 950px) {
+        margin-top: 10px;
+    }
 `
 
 
@@ -128,6 +206,13 @@ const CommentContainer=styled.div`
 const CommentContHeader=styled.div`
     margin-left: 40px;
     margin-bottom: 15px;
+    @media only screen and (max-width: 750px) {
+        margin-left: 10px;
+    }
+    @media only screen and (max-width: 450px) {
+        display: block;
+        text-align: center;
+    }
 `
 const Content=styled.h3`
     color: rgba(0,0,0,0.8);
@@ -139,6 +224,24 @@ const Content=styled.h3`
     border-bottom: ${(props)=>props.isSelected?'3px solid  #f9ca24':'none'};
     &:hover{
         background-color: rgba(220,220,220,0.4);
+    }
+    @media only screen and (max-width: 750px) {
+        margin-right: 15px;
+        font-size: 17px;
+    }
+    @media only screen and (max-width: 600px) {
+        margin-right: 5px;
+        font-size: 15px;
+    }
+    @media only screen and (max-width: 500px) {
+        margin-right: 2px;
+        font-size: 14px;
+        padding: 5px;
+    }
+    @media only screen and (max-width: 450px) {
+        margin-right: 5px;
+        font-size: 15px;
+        padding: 7px;
     }
 `
 const Profile = () => {
@@ -168,15 +271,15 @@ const Profile = () => {
                 </NameContainer>
                 <Nickname>@{user.nickname}</Nickname>
                 <Link to='/login' onClick={()=>setIsLogged(false)}>
-                    <ButtonContainer>
-                            <HiOutlineLogout style={{fontSize:'22px',marginRight:'5px'}}/>
-                            <h4 style={{display:'inline'}}>Çıkış</h4>
+                    <ButtonContainer isFirst={true}>
+                            <HiOutlineLogout style={{fontSize:'22px'}}/>
+                            <ButtonText >Çıkış</ButtonText>
                     </ButtonContainer>
                 </Link>
                 <Link to='/login' onClick={()=>setIsLogged(false)}>
-                    <ButtonContainer style={{right:'150px'}}>
-                            <RiUserSettingsLine style={{fontSize:'22px',marginRight:'5px'}}/>
-                            <h4 style={{display:'inline'}}>Düzenle</h4>
+                    <ButtonContainer isFirst={false} >
+                            <RiUserSettingsLine style={{fontSize:'22px'}}/>
+                            <ButtonText >Düzenle</ButtonText>
                     </ButtonContainer>
                 </Link>
                 <Text style={{float:"left",marginRight:'25px'}}>

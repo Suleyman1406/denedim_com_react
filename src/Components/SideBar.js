@@ -15,7 +15,7 @@ import { useProfile } from '../Context/ProfileContext';
 
  const Bar=styled.div`
     position: ${(props)=>(props.isFixed?  'fixed' : 'absolute' )};
-   top: ${(props)=>(props.isFixed?  '-15px' : '' )};
+    top: ${(props)=>(props.isFixed?  '0px' : '' )};
     width: 20%;
     margin-top: 1px;
     background-color: white;

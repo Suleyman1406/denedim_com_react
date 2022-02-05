@@ -132,22 +132,22 @@ const NavMiddle=styled.div`
   text-align: center;
   
 `
-const NavMidItem=styled.h2`
-  width: 50%;
-  display: inline-block;
-  font-size: 1.15rem;
-  color: white;
-  cursor: pointer;
-  transition: 0.2s all ease;
-  text-align: start;
-  &:hover{
-    transform: translateY(-3px);
-    background-color: rgba(255,255,255,0.1);
-    padding: 20px;
-    font-size: 1.4rem;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  }
-`
+// const NavMidItem=styled.h2`
+//   width: 50%;
+//   display: inline-block;
+//   font-size: 1.15rem;
+//   color: white;
+//   cursor: pointer;
+//   transition: 0.2s all ease;
+//   text-align: start;
+//   &:hover{
+//     transform: translateY(-3px);
+//     background-color: rgba(255,255,255,0.1);
+//     padding: 20px;
+//     font-size: 1.4rem;
+//     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+//   }
+// `
 
 const BarContainer=styled.div`
   display: none;
@@ -337,7 +337,7 @@ const Last=styled.div`
 const Navbar = ({hasContent}) => {
   const[isOpen,setIsOpen] =useState(false);
   const[searchInput,setSearchInput] =useState("");
-  const {isLogged,setIsLogged}=useProfile();
+  const {isLogged}=useProfile();
   const [scrollPosition, setScrollPosition] = useState(0);
     const handleScroll = () => {
         const position = window.pageYOffset;

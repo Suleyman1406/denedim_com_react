@@ -97,11 +97,15 @@ const TodayHeader=styled.h3`
     color: rgba(127, 210, 245);
 `
 const TodayImg=styled.img`
-    height: 70%;
+    width: 20%;
+    max-width: 90px;
     padding: 2px;
     float: left;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
     transition: 0.7s all ease-in-out;
+    @media only screen and (max-width: 1350px) {
+        max-width: 80px;
+    }
     
 `
 const TodayPrg=styled.p`
@@ -169,7 +173,6 @@ const CommentPage = () => {
                     <TodayHeader>Günün Yorumu</TodayHeader>
                     <TodayImg src='images/vacuumCleaner.jpg' />
                     <TodayPrg style={{fontWeight:'bold',padding:'3px 10px'}}>Mini el kuru ve ıslak kablosuz kablosuz elektrik süpürgesi</TodayPrg>
-
                     <TodayPrg>X Marka Elektrik Süpürgesi boyutu küçük ama çok kullanışlı. Cok az yer kaplıyor</TodayPrg>
                 </TodayElement>
             </TodayContainer>
