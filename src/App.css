@@ -2,22 +2,26 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 :root {
   /*===== Colores =====*/
-  --first-color: #1A73E8;
-  --input-color: #80868B;
-  --border-color: #DADCE0;
+  --first-color: #1a73e8;
+  --input-color: #80868b;
+  --border-color: #dadce0;
   /*===== Fuente y tipografia =====*/
-  --body-font: 'Roboto', sans-serif;
+  --body-font: "Roboto", sans-serif;
   --normal-font-size: 1rem;
-  --small-font-size: .75rem;
+  --small-font-size: 0.75rem;
 }
 
 body {
   background-color: rgb(135, 208, 239, 0.2);
+}
+
+body > #root > #loginContainer {
+  height: 80vh;
 }
 
 .space {
@@ -27,7 +31,14 @@ body {
 .tab_layout {
   width: 100%;
   height: 70px;
-  background: linear-gradient(90deg, rgba(139, 199, 152, 1) 0%, rgba(147, 178, 184, 1) 25%, rgba(158, 149, 200, 1) 50%, rgba(149, 182, 222, 1) 75%, rgba(135, 208, 239, 1) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(139, 199, 152, 1) 0%,
+    rgba(147, 178, 184, 1) 25%,
+    rgba(158, 149, 200, 1) 50%,
+    rgba(149, 182, 222, 1) 75%,
+    rgba(135, 208, 239, 1) 100%
+  );
 }
 
 .tab_layout a img {
@@ -44,10 +55,12 @@ body {
   background-color: white;
   width: 35%;
   height: fit-content;
-  margin: 40px auto;
+  margin: auto;
   text-align: center;
   padding: 40px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   border-radius: 15px;
 }
 
@@ -63,7 +76,6 @@ body {
   height: 3px;
   border: none;
   background-color: #1ecd97;
-  ;
 }
 
 .form_register {
@@ -79,7 +91,6 @@ body {
 .group1 {
   margin-top: 50px;
 }
-
 
 .radio {
   width: 50%;
@@ -106,7 +117,7 @@ body {
   height: 100%;
   font-size: var(--normal-font-size);
   border: 1px solid var(--border-color);
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   padding: 1rem;
   background: none;
   z-index: 1;
@@ -120,38 +131,33 @@ body {
   background-color: #fff;
   color: var(--input-color);
   font-size: var(--normal-font-size);
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .form__button:hover {
-  box-shadow: 0 10px 36px rgba(0, 0, 0, .15);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.15);
 }
-
 
 /*Input focus move up label*/
 
-.form__input:focus+.form__label {
-  top: -.5rem;
-  left: .8rem;
+.form__input:focus + .form__label {
+  top: -0.5rem;
+  left: 0.8rem;
   font-size: var(--small-font-size);
   font-weight: 500;
   z-index: 10;
   color: #1ecd97;
-
 }
-
 
 /*Input focus sticky top label*/
 
-.form__input:not(:placeholder-shown).form__input:not(:focus)+.form__label {
-  top: -.5rem;
-  left: .8rem;
+.form__input:not(:placeholder-shown).form__input:not(:focus) + .form__label {
+  top: -0.5rem;
+  left: 0.8rem;
   font-size: var(--small-font-size);
   font-weight: 500;
   z-index: 10;
-
 }
-
 
 /*Input focus*/
 
@@ -165,23 +171,19 @@ body {
   font-weight: 500;
   position: relative;
   overflow: hidden;
-
 }
 
 #label input {
   position: absolute;
   left: -9999px;
-
 }
 
-#label input:checked+span {
+#label input:checked + span {
   background-color: #d6d6e5;
-
 }
 
-#label input:checked+span:before {
+#label input:checked + span:before {
   box-shadow: inset 0 0 0 0.4375em #00005c;
-
 }
 
 #label span {
@@ -246,12 +248,12 @@ body {
 }
 /* On mouse-over, add a grey background color */
 
-.container:hover input~.checkmark {
+.container:hover input ~ .checkmark {
   background-color: #ccc;
 }
 /* When the checkbox is checked, add a blue background */
 
-.container input:checked~.checkmark {
+.container input:checked ~ .checkmark {
   background-color: #1ecd97;
 }
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -263,7 +265,7 @@ body {
 }
 /* Show the checkmark when checked */
 
-.container input:checked~.checkmark:after {
+.container input:checked ~ .checkmark:after {
   display: block;
 }
 /* Style the checkmark/indicator */
@@ -333,7 +335,7 @@ body {
   margin-left: 0.5rem;
   font-family: Andale Mono, monospace;
 }
-.login{
+.login {
   width: 90%;
   text-align: left;
 }
@@ -345,7 +347,7 @@ body {
   transition: 0.2s all;
 }
 
-.toRegister:hover{
+.toRegister:hover {
   opacity: 0.8;
 }
 
@@ -363,82 +365,82 @@ body {
   text-decoration: none;
   color: rgb(30, 205, 151);
 }
-.log hr{
+.log hr {
   margin-bottom: 25px;
 }
 
-.log{
+.log {
   margin-top: 100px;
 }
 
 @media only screen and (max-width: 1400px) {
   .form__div {
-      width: 90%;
-      height: 48px;
+    width: 90%;
+    height: 48px;
   }
   .radio {
-      width: 90%;
-      position: relative;
+    width: 90%;
+    position: relative;
   }
   .invisible {
-      display: none;
+    display: none;
   }
-  
+
   .register {
-      width: 45%;
+    width: 45%;
   }
-  .log{
+  .log {
     margin-top: 80px;
   }
 }
 
 @media only screen and (max-width: 1000px) {
   .register {
-      width: 50%;
-      margin: 30px auto;
+    width: 50%;
+    margin: 30px auto;
   }
-  .log{
+  .log {
     margin-top: 60px;
   }
 }
 
 @media only screen and (max-width: 600px) {
   .register {
-      width: 70%;
-      margin: 20px auto;
+    width: 70%;
+    margin: 20px auto;
   }
-  .log{
+  .log {
     margin-top: 40px;
   }
 }
 
 @media only screen and (max-width: 500px) {
-  *{
+  * {
     font-size: 14px;
   }
   .register {
-      width: 80%;
-      margin: 10px auto;
+    width: 80%;
+    margin: 10px auto;
   }
-  .register h2{
+  .register h2 {
     font-size: 40px;
   }
-  .register hr{
+  .register hr {
     width: 45%;
   }
-  .group1{
+  .group1 {
     margin-top: 20px;
   }
-  #submit_btn{
+  #submit_btn {
     margin-top: 20px;
   }
-  .form__div{
+  .form__div {
     margin-bottom: 0.8rem;
   }
-  .form__input:not(:placeholder-shown).form__input:not(:focus)+.form__label {
+  .form__input:not(:placeholder-shown).form__input:not(:focus) + .form__label {
     top: -0.2rem;
   }
-  .log{
+  .log {
     margin-top: 30px;
   }
 }
