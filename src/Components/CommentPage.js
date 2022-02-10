@@ -52,7 +52,7 @@ const TodayContainer = styled.div`
 const TodayElement = styled.div`
   width: 42%;
   position: relative;
-  height: fit-content;
+  height: 160px;
   padding: 10px 20px 20px 20px;
   display: inline-block;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
@@ -70,6 +70,7 @@ const TodayElement = styled.div`
   }
   @media only screen and (max-width: 1350px) {
     width: 80%;
+    height: fit-content;
     margin-right: 0 !important;
     margin-left: 0 !important;
     margin-top: 20px;
@@ -123,7 +124,7 @@ const TodayPrg = styled.p`
   font-size: 12px;
   padding: 10px;
   transition: 0.2s all;
-
+  margin: 0;
   @media only screen and (max-width: 1350px) {
     padding: 5px !important;
     width: 70%;

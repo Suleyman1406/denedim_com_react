@@ -44,6 +44,12 @@ const Bar = styled.div`
 
 const BarContainer = styled.div`
   padding: 20px;
+  @media only screen and (max-height: 800px) {
+    padding: 10px;
+  }
+  @media only screen and (max-height: 600px) {
+    padding: 5px;
+  }
 `;
 const ProfileContainer = styled.div`
   width: 80%;
@@ -51,6 +57,12 @@ const ProfileContainer = styled.div`
   padding-top: 10px;
   margin-bottom: 20px;
   text-align: center;
+  @media only screen and (max-height: 800px) {
+    margin-bottom: 10px;
+  }
+  @media only screen and (max-height: 600px) {
+    margin-bottom: 10px;
+  }
 `;
 
 const BarImg = styled.img`
@@ -86,6 +98,14 @@ const BarBtn = styled(Link)`
   @media only screen and (max-width: 1350px) {
     font-size: 14px;
   }
+  @media only screen and (max-height: 800px) {
+    padding: 14px;
+    margin-bottom: 5px;
+  }
+  @media only screen and (max-height: 600px) {
+    padding: 13px;
+    margin-bottom: 0;
+  }
 `;
 
 const ProfileParag = styled.p`
@@ -100,6 +120,14 @@ const ProfileParag = styled.p`
     background-color: ${(props) =>
       props.isName ? "" : "rgba(220,220,220,0.2)"};
     border-radius: 10px;
+  }
+  @media only screen and (max-height: 800px) {
+    padding: 0px 5px 2px 5px;
+    margin-bottom: 8px;
+  }
+  @media only screen and (max-height: 600px) {
+    padding: 0px 5px 0px 5px;
+    margin-bottom: 5px;
   }
 `;
 const Icon = styled(FaArrowAltCircleRight)`
@@ -185,7 +213,10 @@ const SideBar = () => {
               />
               Profil
             </BarBtn>
-            <BarBtn to="category">
+            <BarBtn
+              to="category"
+              onClick={() => setOpenBtnDisplay(!openBtnDisplay)}
+            >
               <MdCategory
                 style={{
                   transform: "translateY(-1px)",
@@ -196,7 +227,10 @@ const SideBar = () => {
               />
               Kategoriler
             </BarBtn>
-            <BarBtn to="saved">
+            <BarBtn
+              to="saved"
+              onClick={() => setOpenBtnDisplay(!openBtnDisplay)}
+            >
               <BsBookmarkCheckFill
                 style={{
                   transform: "translateY(-1px)",
@@ -207,7 +241,10 @@ const SideBar = () => {
               />
               Kaydedilenler
             </BarBtn>
-            <BarBtn to="share">
+            <BarBtn
+              to="share"
+              onClick={() => setOpenBtnDisplay(!openBtnDisplay)}
+            >
               <RiSendPlaneFill
                 style={{
                   transform: "translateY(-1px)",
@@ -218,7 +255,7 @@ const SideBar = () => {
               />
               Post Paylaş
             </BarBtn>
-            <BarBtn to="">
+            <BarBtn to="" onClick={() => setOpenBtnDisplay(!openBtnDisplay)}>
               <RiCoupon2Fill
                 style={{
                   transform: "translateY(-1px)",

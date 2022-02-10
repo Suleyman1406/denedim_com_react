@@ -15,8 +15,8 @@ const RegisterPage = () => {
 
   return (
     <>
-      <div className="register">
-        <h2>Üye kayıt</h2>
+      <div className="register log">
+        <h2>Üye Kayıt</h2>
         <hr />
         <div className="form_register ">
           <form action="#">
@@ -30,7 +30,7 @@ const RegisterPage = () => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
-                <label className="form__label">Ad</label>
+                <label className=" form__label ex">Ad</label>
               </div>
 
               <div className="form__div">
@@ -41,7 +41,7 @@ const RegisterPage = () => {
                   value={surname}
                   onChange={(e) => setSurname(e.target.value)}
                 />
-                <label className="form__label">Soyad</label>
+                <label className="form__label ex">Soyad</label>
               </div>
             </div>
 
@@ -54,7 +54,7 @@ const RegisterPage = () => {
                   value={nickname}
                   onChange={(e) => setNickname(e.target.value)}
                 />
-                <label className="form__label">Kullanıcı adı</label>
+                <label className="form__label ex">Kullanıcı adı</label>
               </div>
 
               <div className="form__div">
@@ -65,7 +65,7 @@ const RegisterPage = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <label className="form__label">E-posta</label>
+                <label className="form__label ex">E-posta</label>
               </div>
             </div>
 
@@ -78,7 +78,7 @@ const RegisterPage = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <label className="form__label">Şifre</label>
+                <label className="form__label ex">Şifre</label>
               </div>
 
               <div className="form__div">
@@ -89,7 +89,7 @@ const RegisterPage = () => {
                   value={repassword}
                   onChange={(e) => setRepassword(e.target.value)}
                 />
-                <label className="form__label">Şifre tekrar</label>
+                <label className="form__label ex">Şifre tekrar</label>
               </div>
             </div>
 
@@ -106,11 +106,11 @@ const RegisterPage = () => {
                   value={job}
                   onChange={(e) => setJob(e.target.value)}
                 />
-                <label className="form__label">Meslek</label>
+                <label className="form__label ex">Meslek</label>
               </div>
               <div className="form__div invisible">
                 <input type="text" className="form__input" placeholder=" " />
-                <label className="form__label"></label>
+                <label className="form__label ex"></label>
               </div>
 
               <div className="radio">

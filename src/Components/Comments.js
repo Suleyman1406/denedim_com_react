@@ -98,9 +98,7 @@ const LikeIcon = styled(AiFillLike)`
   padding: 5px;
   color: rgba(127, 210, 245);
   transition: 0.1s all;
-  &:hover {
-    opacity: 0.5;
-  }
+
   @media only screen and (max-width: 550px) {
     font-size: 32px;
     transform: translateY(-1px);
@@ -112,9 +110,7 @@ const DisLikeIcon = styled(AiFillDislike)`
   color: rgba(127, 210, 245);
   transform: translateY(5px);
   transition: 0.1s all;
-  &:hover {
-    opacity: 0.5;
-  }
+
   @media only screen and (max-width: 550px) {
     font-size: 32px;
     transform: translateY(3px);
@@ -127,9 +123,7 @@ const ShareIcon = styled(FaShareAlt)`
   color: rgba(127, 210, 245);
   transform: translateY(3px);
   transition: 0.1s all;
-  &:hover {
-    opacity: 0.5;
-  }
+
   @media only screen and (max-width: 550px) {
     font-size: 32px;
     transform: translateY(2px);
@@ -144,9 +138,7 @@ const SavedIcon = styled(BsBookmarkCheckFill)`
   top: 15px;
   color: rgb(158, 149, 200);
   transition: 0.1s all;
-  &:hover {
-    opacity: 0.5;
-  }
+
   @media only screen and (max-width: 550px) {
     position: initial;
     font-size: 32px;
@@ -162,9 +154,7 @@ const AddToSavedIcon = styled(BsBookmarkPlus)`
   top: 15px;
   color: rgba(127, 210, 245);
   transition: 0.1s all;
-  &:hover {
-    opacity: 0.5;
-  }
+
   @media only screen and (max-width: 550px) {
     position: initial;
     font-size: 32px;
@@ -238,7 +228,7 @@ const Comments = ({ comments }) => {
     <>
       {comments.map((com) => {
         return (
-          <CommentContainer key={com.id}>
+          <CommentContainer className="noSelect" key={com.id}>
             <CommentImg src={com.image} />
             <CommentContentContainer>
               <UserName style={{ fontSize: "16px" }}>

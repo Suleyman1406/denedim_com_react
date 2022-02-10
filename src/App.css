@@ -21,7 +21,7 @@ body {
 }
 
 body > #root > #loginContainer {
-  height: 80vh;
+  height: 90vh;
 }
 
 .space {
@@ -53,7 +53,7 @@ body > #root > #loginContainer {
 
 .register {
   background-color: white;
-  width: 35%;
+  width: 45%;
   height: fit-content;
   margin: auto;
   text-align: center;
@@ -81,7 +81,18 @@ body > #root > #loginContainer {
 .form_register {
   text-align: start;
 }
-
+.noSelect {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.noSelect:focus {
+  outline: none !important;
+}
 .group {
   width: 100%;
   text-align: center;
@@ -96,8 +107,9 @@ body > #root > #loginContainer {
   width: 50%;
   display: inline;
   position: absolute;
+  font-size: 18px;
   right: 1em;
-  top: 10px;
+  top: 5px;
 }
 
 .form__div {
@@ -127,7 +139,7 @@ body > #root > #loginContainer {
 .form__label {
   position: absolute;
   left: 1rem;
-  top: 1rem;
+  top: 0.8rem;
   background-color: #fff;
   color: var(--input-color);
   font-size: var(--normal-font-size);
@@ -179,11 +191,11 @@ body > #root > #loginContainer {
 }
 
 #label input:checked + span {
-  background-color: #d6d6e5;
+  background-color: rgba(220, 220, 220);
 }
 
 #label input:checked + span:before {
-  box-shadow: inset 0 0 0 0.4375em #00005c;
+  box-shadow: inset 0 0 0 0.4375em #87d0ef;
 }
 
 #label span {
@@ -195,7 +207,7 @@ body > #root > #loginContainer {
 }
 
 #label span:hover {
-  background-color: #d6d6e5;
+  background-color: rgba(220, 220, 220);
 }
 
 #label span:before {
@@ -209,7 +221,7 @@ body > #root > #loginContainer {
   margin-right: 0.375em;
   transition: 0.25s ease;
 
-  box-shadow: inset 0 0 0 0.125em #00005c;
+  box-shadow: inset 0 0 0 0.125em #87d0ef;
 }
 
 .container {
@@ -321,6 +333,7 @@ body > #root > #loginContainer {
   padding: 1rem;
   font-size: 1.2rem;
   margin-left: 0.5rem;
+  text-align: center;
   font-family: Andale Mono, monospace;
 }
 
@@ -370,6 +383,7 @@ body > #root > #loginContainer {
 }
 
 .log {
+  width: 35%;
   margin-top: 100px;
 }
 
@@ -387,7 +401,7 @@ body > #root > #loginContainer {
   }
 
   .register {
-    width: 45%;
+    width: 60%;
   }
   .log {
     margin-top: 80px;
@@ -396,7 +410,7 @@ body > #root > #loginContainer {
 
 @media only screen and (max-width: 1000px) {
   .register {
-    width: 50%;
+    width: 70%;
     margin: 30px auto;
   }
   .log {
@@ -404,9 +418,9 @@ body > #root > #loginContainer {
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 650px) {
   .register {
-    width: 70%;
+    width: 85%;
     margin: 20px auto;
   }
   .log {
@@ -419,28 +433,41 @@ body > #root > #loginContainer {
     font-size: 14px;
   }
   .register {
-    width: 80%;
+    width: 90%;
     margin: 10px auto;
+    padding: 25px 10px;
   }
   .register h2 {
-    font-size: 40px;
+    font-size: 30px;
   }
+  .form__label {
+    top: 1rem;
+  }
+
   .register hr {
     width: 45%;
   }
   .group1 {
     margin-top: 20px;
   }
-  #submit_btn {
-    margin-top: 20px;
-  }
+
   .form__div {
     margin-bottom: 0.8rem;
   }
   .form__input:not(:placeholder-shown).form__input:not(:focus) + .form__label {
-    top: -0.2rem;
+    top: -0.5rem;
   }
   .log {
     margin-top: 30px;
+  }
+  @media only screen and (max-width: 350px) {
+    * {
+      font-size: 13px;
+    }
+    .register {
+      width: 98%;
+      margin: 10px auto;
+      padding: 20px 5px;
+    }
   }
 }
