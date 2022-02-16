@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiFillLike, AiFillDislike } from "react-icons/ai";
 import { FaShareAlt } from "react-icons/fa";
 import { BsBookmarkCheckFill, BsBookmarkPlus } from "react-icons/bs";
 import styled from "styled-components";
 import { useProfile } from "../Context/ProfileContext";
+import CommentModal from "./CommentModal";
 
 const CommentContainer = styled.div`
   position: relative;
@@ -174,6 +175,8 @@ const Comments = ({ comments }) => {
     setLikedCommentsId,
     setUnLikedCommentsId,
   } = useProfile();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalComment, setModalComment] = useState({});
   const removeFromArr = (id, arr) => {
     const index = arr.indexOf(id);
     if (index > -1) {
@@ -228,7 +231,14 @@ const Comments = ({ comments }) => {
     <>
       {comments.map((com) => {
         return (
-          <CommentContainer className="noSelect" key={com.id}>
+          <CommentContainer
+            onClick={() => {
+              setModalOpen(true);
+              setModalComment(com);
+            }}
+            className="noSelect"
+            key={com.id}
+          >
             <CommentImg src={com.image} />
             <CommentContentContainer>
               <UserName style={{ fontSize: "16px" }}>
@@ -277,6 +287,16 @@ const Comments = ({ comments }) => {
           </CommentContainer>
         );
       })}
+      {modalOpen && (
+        <CommentModal
+          close={() => {
+            console.log("girdi");
+            setModalOpen(false);
+          }}
+          info={{ isLogged }}
+          comment={modalComment}
+        />
+      )}
     </>
   );
 };
